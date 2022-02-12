@@ -1,37 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 @media(max-width: 614px){
-    body{
-    }
     header{
-        height: 80px;
-        margin-left: 22px;
-        margin-right: 22px;
-        position: absolute;
+        position: fixed;
         top: 0;
-        left: 0;
+        justify-content: space-between;
+        height: 80px;
+        padding-left: 22px;
+        padding-right: 22px;
         width: calc(100% - 44px);
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        /* border: 1px solid black; */
+        background-color: aliceblue;
+        /* border: 1px solid black;*/
     }
     main{
         margin-left: 8px;
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+    section{
+        display: flex;
         text-align: left;
-        margin-top: 90px;
+        align-items: center;
+        height: 40px;
     }
     footer{
+        position: fixed;
         height: 80px;
         width: calc(100% - 44px);
-        margin-left: 22px;
-        margin-right: 22px;
-        position: absolute;
+        padding-left: 22px;
+        padding-right: 22px;
         bottom: 0;
-        left: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        bottom: 0;
-        left: 0;
+        background-color: aliceblue;
         /* border: 1px solid black; */
-    }   
+    }
+    section{
+        display: flex;
+        border: 2px solid black;
+    }
+    * p {
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0em;
+        text-align: left;}
+
 }
