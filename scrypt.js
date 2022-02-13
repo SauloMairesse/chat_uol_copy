@@ -1,36 +1,47 @@
-let requestName =  prompt('Qual Seu nome de login ?')
-const nome = {
-    name: `${requestName} `
-}
-// loginUsuario();
-// function loginUsuario() {
-//     let usuario = axios.post('https://mock-api.driven.com.br/api/v4/uol/participants',nome);
-//     usuario.then(tratarSucesso)
-//     usuario.catch(tratarErro)
-// }
-let promessaMensagensServidor = axios.get('https://mock-api.driven.com.br/api/v4/uol/messages');
-promessaMensagensServidor.then(mostrarConsole);
-function mostrarConsole(resposta){
-    console.log(resposta.data);
-    const mainHTML = document.querySelector('main');
-    for(let i = 0; i <= resposta.data.length; i++){
-    mainHTML.innerHTML += `<section>
-                                <ul>
-                                    <li><b><strong>${resposta.data[i].from}</strong></b> para <b>${resposta.data[i].to}</b>: ${resposta.data[i].texto}</li>
-                                </ul>
-                            </section>`;
+loginUsuario();
+
+function loginUsuario(){
+    let requestName = prompt('Digite seu Nick: ');
+    let nome = {
+        name: `${requestName}`
     }
+    if (requestName != null){        
+        let promessaLoginUser = axios.post('https://mock-api.driven.com.br/api/v4/uol/participants',{name: `${requestName}`});
+        promessaLoginUser.catch(tratarErro);
+        promessaLoginUser.then(setInterval(requestMensage,3000));
+        //setInterval(manterUsuarioON(nome),5000)
+        setInterval(function() {manterUsuarioON(nome); }, 5000);
+    }
+}   
+
+function requestMensage(){
+    let promessaMensagensDoServidor = axios.get('https://mock-api.driven.com.br/api/v4/uol/messages');
+    promessaMensagensDoServidor.then(mostrarConsoleEntrada);
 }
 
-// function tratarSucesso(resposta){
+function mostrarConsoleEntrada(resposta){
+    let mainHTML = document.querySelector('main');
+    mainHTML.innerHTML = '';
+    for(let i = 0; i < resposta.data.length; i++){
+            mainHTML.innerHTML += `<section>
+                                        <ul>
+                                            <li><b>${resposta.data[i].time}</b> <b><strong>${resposta.data[i].from}</strong></b> para <b>${resposta.data[i].to}</b>: ${resposta.data[i].text}</li>
+                                            <li>${resposta.data[i].type}</li>
+                                        </ul>
+                                    </section>`;
+    }
+    console.log('Mostrando')
+    // mainHTML.lastChild.scrollIntoView();
+}
 
-    // const mainHTML = document.querySelector('main');
-    // mainHTML.innerHTML += `<section>
-    //                             <strong>${nome.name}</strong>entrou na sala ...
-    //                         </section>`;}
+function manterUsuarioON(nome){
+    let usuarioOn = axios.post('https://mock-api.driven.com.br/api/v4/uol/status',nome);
+    usuarioOn.then(console.log('Estou online'));
+}
+
 function tratarErro(erro) {
     console.log("Status code: " + erro.response.status); // Ex: 404
     console.log("Mensagem de erro: " + erro.response.data); // Ex: Not Found
-    requestName = prompt('Nome já em uso. Tente outro:');
+    alert('Nome já em uso. Tente outro.');
     loginUsuario();
 }

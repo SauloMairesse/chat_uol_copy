@@ -21,9 +21,12 @@
     }
     section{
         display: flex;
+        flex-wrap: wrap;
         text-align: left;
         align-items: center;
         height: 40px;
+        border: 2px solid black;
+        /* text-overflow: "…" */
     }
     footer{
         position: fixed;
@@ -38,17 +41,15 @@
         background-color: aliceblue;
         /* border: 1px solid black; */
     }
-    section{
-        display: flex;
-        border: 2px solid black;
-    }
-    * p {
-        font-family: Roboto;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 16px;
-        letter-spacing: 0em;
-        text-align: left;}
 
+    input{
+        border: none;
+        box-shadow: 0 0 0;
+        outline: 0;
+        font-size: 20px;
+    }
+
+    input::placeholder{
+        color: black;
+    }
 }
