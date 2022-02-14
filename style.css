@@ -1,55 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-@media(max-width: 614px){
-    header{
-        position: fixed;
-        top: 0;
-        justify-content: space-between;
-        height: 80px;
-        padding-left: 22px;
-        padding-right: 22px;
-        width: calc(100% - 44px);
-        display: flex;
-        align-items: center;
-        background-color: aliceblue;
-        /* border: 1px solid black;*/
-    }
-    main{
-        margin-left: 8px;
-        padding-top: 90px;
-        padding-bottom: 90px;
-    }
-    section{
-        display: flex;
-        flex-wrap: wrap;
-        text-align: left;
-        align-items: center;
-        height: 40px;
-        border: 2px solid black;
-        /* text-overflow: "…" */
-    }
-    footer{
-        position: fixed;
-        height: 80px;
-        width: calc(100% - 44px);
-        padding-left: 22px;
-        padding-right: 22px;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: aliceblue;
-        /* border: 1px solid black; */
-    }
+body{
+    width: 100vw;
+}
 
-    input{
-        border: none;
-        box-shadow: 0 0 0;
-        outline: 0;
-        font-size: 20px;
-    }
+header{
+    position: fixed;
+    top: 0;
+    justify-content: space-between;
+    height: 80px;
+    padding-left: 22px;
+    padding-right: 22px;
+    width: calc(100% - 44px);
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    /* border: 1px solid black;*/
+}
+main{
+    margin-left: 8px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+section{
+    width: 100vw;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    border: 2px solid black;
+    white-space: normal;
+    /* text-overflow: "…" */
+}
+footer{
+    position: fixed;
+    height: 80px;
+    width: calc(100% - 44px);
+    padding-left: 22px;
+    padding-right: 22px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: aliceblue;
+    /* border: 1px solid black; */
+}
 
-    input::placeholder{
-        color: black;
-    }
+input{
+    width: 89%;
+    border: none;
+    box-shadow: 0 0 0;
+    outline: 0;
+    font-size: 20px;
+}
+
+button{
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+input::placeholder{
+    color: #000;
 }

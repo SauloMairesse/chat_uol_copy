@@ -1,3 +1,4 @@
+let dadoNome;
 loginUsuario();
 
 function loginUsuario(){
@@ -5,6 +6,7 @@ function loginUsuario(){
     let nome = {
         name: `${requestName}`
     }
+    dadoNome = `${requestName}`;
     if (requestName != null){        
         let promessaLoginUser = axios.post('https://mock-api.driven.com.br/api/v4/uol/participants',{name: `${requestName}`});
         promessaLoginUser.catch(tratarErro);
@@ -31,7 +33,7 @@ function mostrarConsoleEntrada(resposta){
                                     </section>`;
     }
     console.log('Mostrando')
-    // mainHTML.lastChild.scrollIntoView();
+    mainHTML.lastChild.scrollIntoView();
 }
 
 function manterUsuarioON(nome){
@@ -44,4 +46,12 @@ function tratarErro(erro) {
     console.log("Mensagem de erro: " + erro.response.data); // Ex: Not Found
     alert('Nome já em uso. Tente outro.');
     loginUsuario();
+}
+
+function enviar() {
+    let mensagemInput = document.querySelector('.mensagem').value; 
+    const objeto = {from: `${dadoNome}`, to: "Todos", text: `${mensagemInput}`, type: "message"};
+    let enviarMensagem = axios.post('https://mock-api.driven.com.br/api/v4/uol/messages',objeto);
+    enviarMensagem.then(console.log(mensagemInput));
+    enviarMensagem.catch(alert('Deu ruim'));
 }
